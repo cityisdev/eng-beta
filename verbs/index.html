@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8"/> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+	<link href = "index.css" rel="stylesheet"/>
+	<script type="text/javascript">
+		setTimeout(function() {
+			if(!document.querySelector('#loading')) 
+				return;
+
+			alert('There are some problems. Use the last version of Google Chrome browser to avoid them.\n\nMinimal supported Android version is 4.1 with Chrome 69.');	
+		}, 30000);
+	</script>
+	<script src = "index.js"></script>
+</head>
+<body>
+	<div id = "page-start" class = "page center" current>
+			<div class = "content">
+				<div id = "power-by"></div>
+				<a id = "logo" href = "https://www.macmillandictionary.com" class = "logo"></a>
+				<div id = "loading">Loading...</div>
+				<div id = "button-start" class = "button">Bắt đầu</div>
+			</div>
+		</div>	
+	</div>
+
+	<div id = "page-main" class = "page absolute">
+		<div class = "caption">
+			<div id = "button-verbs"></div>
+			<div id = "button-help" class = "caption-button">Help</div>	
+			<div id = "button-option" class = "caption-button">Option</div>
+		</div>
+		
+		<div class = "content">
+			<table id = "wrapper">
+				<tr class = "top">
+					<td>
+						<div id = "answer"></div>
+					</td>
+				</tr>	
+				<tr class = "center">
+					<td>
+						<div id = "definition"></div>
+						<div id = "synonyms"></div>
+						<div id = "suggestions"></div>
+						<div id = "examples"></div>
+					</td>
+				</tr>
+				<tr class = "bottom">
+					<td>
+						<div id = "verbs" class = "list"></div>
+						<div id = "preps" class = "list"></div>
+						<div id = "button-block">
+							<div id = "button-verb-skip" class = "button">Skip</div>
+							<div id = "button-verb-add" class = "button">Got it!</div>
+						</div>
+					</td>
+				</tr>
+			</table>	
+		</div>
+	</div>
+
+	<div id = "page-verbs" class = "page absolute">
+		<div class = "caption">
+			<div>ĐỘNG TỪ HIỆN TẠI</div>
+			<div class = "close" back = "main"></div>
+		</div>
+		
+		<div class = "content">	
+			<div id = "verbs"></div>
+		</div>
+	</div>
+
+	<div id = "page-option" class = "page center">
+		<div class = "caption">
+			<div>Option</div>
+			<div id = "button-option-close" class = "close" back = "main"></div>
+		</div>
+		
+		<div class = "content">
+			<div id = "verb-list-length" class = "selector col4" title = "List length" default = "10">
+				<div value = "10">10</div>
+				<div value = "20">20</div>
+				<div value = "30">30</div>
+				<div value = "50">50</div>
+			</div>
+
+			<div id = "verb-check-learned" class = "selector col2" title = "Check learned verbs" default = "yes">
+				<div value = "no">No</div>
+				<div value = "yes">Yes</div>
+			</div>
+
+			<div id = "verb-sound-enable" class = "selector col2" title = "Success ring enable" default = "yes">
+				<div value = "no">No</div>
+				<div value = "yes">Yes</div>
+			</div>
+
+			<div id = "verb-voice" class = "selector" title = "Voice" default = "no">
+				<div value = "no">No</div>
+			</div>
+		</div>
+	</div>
+
+	<div id = "page-help" class = "page absolute">
+		<div class = "caption">
+			<div>Help</div>
+			<div class = "close" back = "main"></div>
+		</div>
+		
+		<div class = "content content-padding">
+			<p>
+				Đây là một ứng dụng để học các cụm động từ. Ứng dụng chọn một cụm động từ ngẫu nhiên, hiển thị định nghĩa và mong bạn vượt qua kiểm tra.<br>
+				Nếu bạn không kiểm tra được, bạn sẽ được quay lại lần kiểm tra trước đó vào lần sau. Nếu tất cả các bài kiểm tra được hoàn thành, động từ sẽ bị xóa khỏi danh sách và một động từ mới sẽ được đề xuất.<br>
+			</p>
+
+			<p>
+				<div>Kiểm tra danh sách cho cụm động từ</div>
+				<ul>
+					<li>Kết hợp một câu trả lời từ 3 động từ và 3 giới từ</li>
+					<li>Chọn một trong 3 định nghĩa theo động từ</li>
+					<li>Kết hợp một câu trả lời từ 5 động từ và 5 giới từ</li>
+					<li>Chọn một trong 3 từ đồng nghĩa với động từ</li>
+					<li>Chọn một trong 5 định nghĩa theo động từ</li>
+					<li>Kết hợp một câu trả lời từ 8 động từ và 8 giới từ</li>
+					<li>Xây dựng lại động từ trong ví dụ</li>
+					<li>Chọn một trong 5 từ đồng nghĩa với động từ</li>
+					<li>Xây dựng lại giới từ trong ví dụ</li>
+				</ul>
+			</p>
+
+			<p>
+				<b>Độ dài danh sách</b>-tùy chọn xác định số lượng động từ bạn đang học cùng một lúc.<br>
+				<b>Kiểm tra các động từ đã học</b>-tùy chọn kiểm soát kiểm tra ngẫu nhiên các động từ đã học.
+			</p>
+
+		</div>
+	</div>
+</body>
+</html>

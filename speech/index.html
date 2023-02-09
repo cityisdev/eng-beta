@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8"/> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+	<link href = "index.css" rel="stylesheet"/>
+	<script type="text/javascript">
+		setTimeout(function() {
+			if(!document.querySelector('#page-start #loading')) 
+				return;
+
+			alert('There are some problems. Use the last version of Google Chrome browser to avoid them.\n\nMinimal supported Android version is 4.1 with Chrome 69.');	
+		}, 10000);
+	</script>
+	<script src = "diff_match_patch.js"></script>
+	<script src = "index.js"></script>
+</head>
+<body>
+	<div id = "page-start" class = "page center" current>
+			<div class = "content">
+				<div id = "power-by">Powered by</div>
+				<a id = "logo" href = "https://www.google.ru/intl/en_uk/chrome/">Google Chrome<br>Speech Recognition</a>
+				<div id = "loading">Loading...</div>
+				<div id = "microphone">Allow access to microphone...</div>
+				<div id = "button-start">Start</div>
+			</div>
+		</div>	
+	</div>
+
+	<div id = "page-main" class = "page absolute" back = "start">
+		<div class = "caption">
+			<div id = "button-text-selector"></div>
+			<div id = "button-help" class = "caption-button">Help</div>	
+			<div id = "button-option" class = "caption-button">Option</div>
+		</div>
+
+		<div class = "content">
+			<div id = "panel-counter">
+				<div id = "button-prev-phrase" class = "button-arrow">&#9668;</div>
+				<input id = "phrase-number-input" type = "number">
+				<div id = "phrase-number"></div>
+				<div id = "button-next-phrase" class = "button-arrow">&#9658;</div>
+				<div id = "caption"></div>
+			</div>
+	
+			<div id = "panel-phrase">
+				<div id = "phrase"></div>
+			</div>
+	
+			<div id = "panel-recognition">
+				<div id = "recognition" title = "Google Speech Recognition result and its cofficient of the recognition confidence">&nbsp;</div>
+				<div id = "compare"></div>
+				<div id = "panel-record">
+					<div id = "button-listen" class = "button">Listen</div>
+					<div id = "button-record" class = "button">Record</div>	
+				</div>				
+			</div>
+		</div>
+	</div>
+
+	<div id = "page-text-selector" class = "page absolute">
+		<div class = "caption">
+			<div id = "button-text-add" class = "left">New</div> 
+			<div class = "close" back = "main"></div>
+		</div>
+
+		<div class = "content">
+			<div id = "texts"></div>
+			<div id = "text-wrapper">
+				<div id = "text" autocomplete = "off"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id = "page-text-add" class = "page absolute">
+		<div class = "caption">
+			<div id = "button-text-save" class = "left">Save</div>
+			<div class = "close" back = "text-selector"></div>
+		</div>
+
+		<div class = "content content-padding">
+			<div id = "caption-block">	
+				<input id = "caption" autocomplete = "off" placeholder = "Caption"></input>
+			</div>	
+			<div id = "button-load-file">File...</div>
+			<div id = "text-block">	
+				<textarea id = "text" autocomplete = "off" placeholder = "Text"></textarea>
+			</div>
+		</div>
+
+		<input id = "upload" type="file" />
+	</div>
+
+	<div id = "page-text-view" class = "page absolute">
+		<div class = "caption">
+			<div></div>
+			<div class = "close" back = "text-selector"></div>
+		</div>
+
+		<div class = "content content-padding">
+		</div>
+	</div>
+
+	<div id = "page-option" class = "page center">
+		<div class = "caption">
+			<div>Option</div> 
+			<div class = "close" back = "main"></div>
+		</div>
+		
+		<div class = "content">
+			<div id = "speech-auto-next" class = "selector col2" title = "Auto move to next phrase" default = "yes">
+				<div value = "no">No</div>
+				<div value = "yes">Yes</div>
+			</div>
+
+			<div id = "speech-success-ring" class = "selector col2" title = "Success ring enable" default = "yes">
+				<div value = "no">No</div>
+				<div value = "yes">Yes</div>
+			</div>
+
+			<div id = "speech-auto-read" class = "selector col2" title = "Auto read phrase" default = "no">
+				<div value = "no">No</div>
+				<div value = "yes">Yes</div>
+			</div>
+
+			<div id = "speech-voice" class = "selector" title = "Voice">
+			</div>
+
+			<div id = "speech-voice-speed" class = "selector col5" title = "Voice speed" default = "1">
+				<div value = "0.7">0.7</div>
+				<div value = "0.8">0.8</div>
+				<div value = "0.9">0.9</div>
+				<div value = "1">1</div>
+				<div value = "1.1">1.1</div>
+			</div>
+		</div>
+	</div>
+
+	<div id = "page-help" class = "page absolute">
+		<div class = "caption">
+			<div>Help</div>
+			<div class = "close" back = "main"></div>
+		</div>
+		<div class = "content content-padding">
+			<p>Đây là một ứng dụng để thực hành giọng nói tiếng Anh thông qua API nhận dạng giọng nói của Google:
+				<ul>
+					<li>Nhấn nút "Ghi âm" và giữ nút đó trong khi bạn đọc to một cụm từ trên màn hình.</li>
+					<li>Tìm hiểu thêm.<a href = "https://developer.mozilla.org/ru/docs/Web/API/Web_Speech_API">Web Speech API</a> và bạn sẽ thấy sự khác biệt giữa các cụm từ được yêu cầu và được công nhận.</li>
+					<li>Lắng nghe giọng nói của bạn bằng cách nhấp vào nút "Nghe" để phát hiện các khiếm khuyết trong phát âm.</li>
+				</ul>
+			</p>
+			<p>
+				Các cụm từ được nhóm trong văn bản: một dòng là một cụm từ.<br> 
+				Bạn có thể chọn văn bản được xác định trước hoặc tạo văn bản của riêng bạn bằng cách nhấp vào biểu tượng bên trái trong tiêu đề trên màn hình chính.
+			</p>
+			<p><b>Ghi nhớ</b><br>
+				<br>
+				Một số cụm từ có thể được nhận dạng không chính xác ngay cả khi phát âm hoàn hảo.<br>
+			</p>
+
+			<p>
+				<b>Recommendation</b><br>
+				Use a high-quality microphone to improve recognition.
+			</p>
+
+			
+
+			
+		</div>
+	</div>
+</body>
+</html>
+
